@@ -21,8 +21,8 @@
     col: 0
     width: 8
     height: 6
-  - title: New Tile
-    name: New Tile
+  - title: Da Customers
+    name: Da Customers
     model: david_ecom
     explore: order_items
     type: table
@@ -34,6 +34,7 @@
     - order_items.sale_price desc
     limit: 5
     column_limit: 50
+    listen: {}
     row: 0
     col: 8
     width: 8
