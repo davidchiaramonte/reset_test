@@ -2,10 +2,16 @@ connection: "thelook"
 
 # include all the views
 include: "*.view"
+include: "*.dashboard"
 
 datagroup: david_ecom_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
+}
+
+datagroup: bug_repro_refresh_rate {
+  sql_trigger: SELECT FLOOR(UNIX_TIMESTAMP() / (2*60*60)) ;;
+  max_cache_age: "2 hours"
 }
 
 persist_with: david_ecom_default_datagroup
@@ -27,6 +33,14 @@ explore: inventory_items {
 }
 
 explore: order_items {
+  from: order_items
+  sql_always_where: 1=1 ;;
+  always_filter: {
+    filters: {
+      field: order_items.returned_date
+      value: "1 days"
+    }
+  }
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
