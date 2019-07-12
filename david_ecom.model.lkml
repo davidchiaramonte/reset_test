@@ -33,14 +33,6 @@ explore: inventory_items {
 }
 
 explore: order_items {
-  from: order_items
-  sql_always_where: 1=1 ;;
-  always_filter: {
-    filters: {
-      field: order_items.returned_date
-      value: "1 days"
-    }
-  }
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
