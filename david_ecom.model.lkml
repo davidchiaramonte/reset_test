@@ -27,6 +27,8 @@ explore: inventory_items {
 }
 
 explore: order_items {
+ # exclude a single field to break a field reference for the content validator in a single explore!
+ # fields: [ALL_FIELDS*,-orders.status]
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
