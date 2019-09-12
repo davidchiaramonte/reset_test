@@ -26,8 +26,14 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+<<<<<<< HEAD
   dimension: test_dim {
     sql: case when ${user_id} < 10 then "this is one long column name" when ${user_id} > 10 then "this is another long column name" end  ;;
+=======
+  dimension: status_2 {
+    type: string
+    sql: ${TABLE}.status ;;
+>>>>>>> branch 'master' of git@github.com:davidchiaramonte/david_ecomv64.git
   }
 
   dimension: user_id {
