@@ -26,6 +26,10 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: test_dim {
+    sql: case when ${user_id} < 10 then "this is one long column name" when ${user_id} > 10 then "this is another long column name" end  ;;
+  }
+
   dimension: user_id {
     type: number
     # hidden: yes
