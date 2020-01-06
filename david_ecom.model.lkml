@@ -105,3 +105,12 @@ explore: always_join_test {
     relationship: many_to_one
   }
 }
+
+explore: bar {
+  extends: [foo]
+  label: "Project Analysis"
+}
+explore: foo {
+  from: users
+  label: "explore_general"
+}
