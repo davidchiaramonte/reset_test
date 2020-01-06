@@ -7,6 +7,11 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
+#   dimension: id_delete_me_and_watch_me_break {
+#     type: number
+#     sql: ${TABLE}.id ;;
+#   }
+
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
