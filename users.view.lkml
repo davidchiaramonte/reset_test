@@ -52,7 +52,7 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-  dimension: genderzzz {
+  dimension: gender {
     type: string
     sql: ${TABLE}.gender ;;
   }
