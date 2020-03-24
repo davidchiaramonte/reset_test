@@ -134,3 +134,5 @@ explore: foo {
   from: users
   label: "explore_general"
 }
+
+explore: NDT_timezone_test {}
