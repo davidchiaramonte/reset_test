@@ -52,7 +52,7 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-  dimension: gender {
+  dimension: genderzzz {
     type: string
     sql: ${TABLE}.gender ;;
   }
@@ -72,7 +72,7 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
-  measure: count {
+  measure: countzz {
     type: count
     drill_fields: [detail*]
   }
