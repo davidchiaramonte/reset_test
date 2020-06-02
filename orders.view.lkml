@@ -64,6 +64,15 @@ view: orders {
 
   }
 
+  dimension: broken_link {
+    type: string
+    sql: ${TABLE}.status ;;
+    link: {
+      label: "Hopefully this breaks!"
+      url: "https://www.google.com?q={{_filters[odrers.user_id]}}"
+    }
+  }
+
 
   dimension: status_2 {
     type: string
