@@ -7,6 +7,11 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
+#   dimension: id_delete_me_and_watch_me_break {
+#     type: number
+#     sql: ${TABLE}.id ;;
+#   }
+
   dimension: age {
     type: number
     sql: ${TABLE}.age ;;
@@ -47,7 +52,7 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-  dimension: gender {
+  dimension: genderzzz {
     type: string
     sql: ${TABLE}.gender ;;
   }
@@ -67,7 +72,7 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
-  measure: count {
+  measure: countzz {
     type: count
     drill_fields: [detail*]
   }
