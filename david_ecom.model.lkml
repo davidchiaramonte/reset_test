@@ -68,12 +68,12 @@ explore: order_items {
 
 explore: orders {
   persist_for: "0 seconds"
-  always_filter: {
-    filters: {
-      field: is_order_new
-      value: "yes"
-    }
-  }
+#   always_filter: {
+#     filters: {
+#       field: is_order_new
+#       value: "yes"
+#     }
+#   }
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
