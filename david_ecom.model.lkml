@@ -2,10 +2,16 @@ connection: "thelook"
 
 # include all the views
 include: "*.view"
+include: "*.dashboard"
 
 datagroup: david_ecom_default_datagroup {
   # sql_trigger: SELECT MAX(id) FROM etl_log;;
   max_cache_age: "1 hour"
+}
+
+datagroup: bug_repro_refresh_rate {
+  sql_trigger: SELECT FLOOR(UNIX_TIMESTAMP() / (2*60*60)) ;;
+  max_cache_age: "2 hours"
 }
 
 persist_with: david_ecom_default_datagroup
@@ -27,6 +33,8 @@ explore: inventory_items {
 }
 
 explore: order_items {
+ # exclude a single field to break a field reference for the content validator in a single explore!
+ # fields: [ALL_FIELDS*,-orders.status]
   join: inventory_items {
     type: left_outer
     sql_on: ${order_items.inventory_item_id} = ${inventory_items.id} ;;
@@ -105,4 +113,13 @@ explore: always_join_test {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+}
+
+explore: bar {
+  extends: [foo]
+  label: "Project Analysis"
+}
+explore: foo {
+  from: users
+  label: "explore_general"
 }
