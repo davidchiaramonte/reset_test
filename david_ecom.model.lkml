@@ -58,10 +58,22 @@ explore: order_items {
     sql_on: ${orders.user_id} = ${users.id} ;;
     relationship: many_to_one
   }
+
+  join: NDT_timezone_test {
+    type: left_outer
+    sql_on: ${orders.created_month} = ${NDT_timezone_test.created_month} ;;
+    relationship: many_to_many
+  }
 }
 
 explore: orders {
   persist_for: "0 seconds"
+  always_filter: {
+    filters: {
+      field: is_order_new
+      value: "yes"
+    }
+  }
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -123,3 +135,5 @@ explore: foo {
   from: users
   label: "explore_general"
 }
+
+explore: NDT_timezone_test {}

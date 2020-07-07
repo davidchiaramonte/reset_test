@@ -7,6 +7,10 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  parameter: is_order_new {
+    type: yesno
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -62,6 +66,15 @@ view: orders {
   dimension: test_dim {
     sql: case when ${user_id} < 10 then "this is one long column name" when ${user_id} > 10 then "this is another long column name" end  ;;
 
+  }
+
+  dimension: broken_link {
+    type: string
+    sql: ${TABLE}.status ;;
+#     link: {
+#       label: "Hopefully this breaks!"
+#       url: "https://www.google.com?q={{_filters[orders.test_dim]}}"
+#     }
   }
 
 
