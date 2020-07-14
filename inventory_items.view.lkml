@@ -32,6 +32,17 @@ view: inventory_items {
     sql: ${TABLE}.product_id ;;
   }
 
+  dimension: work_number_link {
+    label: "Work Number Link" # ToDo: Remove work link
+    description: "Testing common dim/measure extension"
+    sql: ${product_id} ;;
+    link: {
+      label: "{{ value }}"
+      url: "https://www.workmarket.com/assignments/details/{{ value }}"
+      icon_url: "https://www.workmarket.com/favicon.ico"
+    }
+  }
+
   dimension_group: sold {
     type: time
     timeframes: [
