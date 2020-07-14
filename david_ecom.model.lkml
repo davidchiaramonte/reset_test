@@ -25,6 +25,10 @@ explore: events {
 }
 
 explore: inventory_items {
+  conditionally_filter: {
+    filters: [products.id: "13"]
+    unless: [products.brand]
+  }
   join: products {
     type: left_outer
     sql_on: ${inventory_items.product_id} = ${products.id} ;;
