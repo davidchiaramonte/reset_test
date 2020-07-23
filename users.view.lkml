@@ -52,9 +52,9 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-  dimension: genderzzz {
+  dimension: gender {
     type: string
-    sql: ${TABLE}.gender ;;
+    sql: CASE WHEN ${TABLE}.gender = 'm' THEN null ELSE ${TABLE}.gender END ;;
   }
 
   dimension: last_name {
