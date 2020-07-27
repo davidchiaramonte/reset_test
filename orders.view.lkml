@@ -7,6 +7,10 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  parameter: is_order_new {
+    type: yesno
+  }
+
   dimension_group: created {
     type: time
     timeframes: [
@@ -64,14 +68,14 @@ view: orders {
 
   }
 
-  dimension: broken_link {
-    type: string
-    sql: ${TABLE}.status ;;
-    link: {
-      label: "Hopefully this breaks!"
-      url: "https://www.google.com?q={{_filters[odrers.user_id]}}"
-    }
-  }
+#   dimension: broken_link {
+#     type: string
+#     sql: ${TABLE}.status ;;
+#     link: {
+#       label: "Hopefully this breaks!"
+#       url: "https://www.google.com?q={{_filters[odrers.user_id]}}"
+#     }
+#   }
 
 
   dimension: status_2 {
