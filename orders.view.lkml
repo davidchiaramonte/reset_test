@@ -8,6 +8,7 @@ view: orders {
   }
 
   parameter: is_order_new {
+    group_label: "This Errors in LookML"
     type: yesno
   }
 
