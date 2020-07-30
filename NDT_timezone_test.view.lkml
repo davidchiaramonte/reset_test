@@ -3,8 +3,6 @@
 
 view: NDT_timezone_test {
   derived_table: {
-    persist_for: "36 hours"
-    indexes: ["created_month"]
     explore_source: order_items {
       column: created_month { field: orders.created_month }
       column: count { field: orders.count }
