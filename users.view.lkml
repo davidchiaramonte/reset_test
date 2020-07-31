@@ -12,7 +12,7 @@ view: users {
 #     sql: ${TABLE}.id ;;
 #   }
 
-  dimension: age {
+  dimension: age_age_age {
     type: number
     sql: ${TABLE}.age ;;
   }
