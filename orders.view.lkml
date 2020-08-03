@@ -7,6 +7,10 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  parameter: is_order_new {
+    type: yesno
+  }
+
   dimension_group: created {
     type: time
     timeframes: [

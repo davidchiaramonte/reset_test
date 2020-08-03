@@ -10,7 +10,7 @@ view: NDT_timezone_test {
         field: orders.created_month
         value: "10 months"
       }
-      bind_all_filters: yes
+      #bind_all_filters: yes
     }
   }
   dimension: created_month {

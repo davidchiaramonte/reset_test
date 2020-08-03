@@ -67,6 +67,12 @@ explore: order_items {
 }
 
 explore: orders {
+  always_filter: {
+    filters: {
+      field: is_order_new
+      value: "yes"
+    }
+  }
   join: users {
     type: left_outer
     sql_on: ${orders.user_id} = ${users.id} ;;
@@ -119,3 +125,14 @@ explore: always_join_test {
     relationship: many_to_one
   }
 }
+
+explore: bar {
+  extends: [foo]
+  label: "Project Analysis"
+}
+explore: foo {
+  from: users
+  label: "explore_general"
+}
+
+explore: NDT_timezone_test {}
