@@ -72,6 +72,11 @@ view: users {
     sql: ${TABLE}.zip ;;
   }
 
+  measure: count {
+    type: count
+    drill_fields: [detail*]
+  }
+
   measure: countzz {
     type: count
     drill_fields: [detail*]
