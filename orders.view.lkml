@@ -99,5 +99,9 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [id, users.first_name, users.last_name, users.id, order_items.count]
+    link: {
+      label: "Doesn't Work for 1st Row"
+      url: "https://google.com"
+    }
   }
 }
