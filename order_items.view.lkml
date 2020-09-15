@@ -13,6 +13,10 @@ view: order_items {
     sql: ${TABLE}.inventory_item_id ;;
   }
 
+  dimension: my_field {
+    type: broken
+  }
+
   dimension: order_id {
     type: number
     # hidden: yes
