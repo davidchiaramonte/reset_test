@@ -7,12 +7,7 @@ view: users {
     sql: ${TABLE}.id ;;
   }
 
-#   dimension: id_delete_me_and_watch_me_break {
-#     type: number
-#     sql: ${TABLE}.id ;;
-#   }
-
-  dimension: age {
+  dimension: age_age_age {
     type: number
     sql: ${TABLE}.age ;;
   }
@@ -52,9 +47,9 @@ view: users {
     sql: ${TABLE}.first_name ;;
   }
 
-  dimension: genderzzz {
+  dimension: gender {
     type: string
-    sql: ${TABLE}.gender ;;
+    sql: CASE WHEN ${TABLE}.gender = 'm' THEN null ELSE ${TABLE}.gender END ;;
   }
 
   dimension: last_name {
