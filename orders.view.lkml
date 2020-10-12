@@ -7,6 +7,12 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
+  dimension: id_with_html {
+    type: number
+    sql: ${TABLE}.id ;;
+    html: <p style="font-size: 40px; color: black; text-align: center;">{{rendered_value}}</p>;;
+  }
+
   parameter: is_order_new {
     group_label: "This Errors in LookML"
     type: yesno
