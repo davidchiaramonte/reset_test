@@ -90,6 +90,15 @@ view: orders {
     sql: ${TABLE}.status ;;
   }
 
+  dimension: status_with_link_to_dash {
+    type: string
+    sql: ${TABLE}.status ;;
+    link: {
+      url: "https://lookerv714.dev.looker.com/dashboards-next/414"
+      label: "Drill to Dashboard"
+    }
+  }
+
   dimension: user_id {
     type: number
     # hidden: yes
@@ -105,5 +114,9 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [id, users.first_name, users.last_name, users.id, order_items.count]
+    link: {
+      label: "Doesn't Work for 1st Row"
+      url: "https://google.com"
+    }
   }
 }
