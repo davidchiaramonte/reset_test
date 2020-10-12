@@ -19,8 +19,7 @@
       explore: order_items
       type: table
       fields: [users.age, users.city, users.country, users.created_date, users.email,
-        users.first_name, users.last_name, users.state, users.zip, users.count, users.gender,
-        users.id]
+        users.first_name, users.last_name, users.state, users.zip, users.count, users.gender, users.id]
       sorts: [users.id]
       limit: 500
       total: true
@@ -57,8 +56,7 @@
       explore: order_items
       type: table
       fields: [users.age, users.city, users.country, users.created_date, users.email,
-        users.first_name, users.last_name, users.state, users.zip, users.count, users.gender,
-        users.id]
+        users.first_name, users.last_name, users.state, users.zip, users.count, users.gender, users.id]
       sorts: [users.id]
       limit: 500
       query_timezone: America/Los_Angeles
