@@ -7,10 +7,32 @@ view: orders {
     sql: ${TABLE}.id ;;
   }
 
-  dimension: id_with_html {
+  dimension: id_embed_repro {
+    label: "Risk Rank"
     type: number
     sql: ${TABLE}.id ;;
     html: <p style="font-size: 40px; color: black; text-align: center;">{{rendered_value}}</p>;;
+  }
+
+  dimension: status_embed_repro {
+    label: "Metropolitan Areas"
+    type: string
+    sql: ${TABLE}.status ;;
+    html: <p style="font-size: 20px; color: black; text-align: left;">{{rendered_value}}</p>;;
+  }
+
+  dimension: static_decimal_embed_repro {
+    label: "Level of Risk of Price Decline"
+    type: number
+    sql: cast(9 as decimal(4,2)) ;;
+    html: <p style="font-size: 20px; color: black; text-align: left;">{{rendered_value}}</p>;;
+  }
+
+  dimension: number_embed_repro {
+    label: "Confidence Score"
+    type: number
+    sql: ${TABLE}.id ;;
+    html: <p style="font-size: 40px; color: black; text-align: left;">{{rendered_value}}%+</p>;;
   }
 
   parameter: is_order_new {
