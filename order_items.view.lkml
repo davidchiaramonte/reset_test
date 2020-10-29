@@ -42,6 +42,7 @@ view: order_items {
     label: "Statement Value"
     type: sum
     sql: ${TABLE}.sale_price ;;
+    value_format_name: usd
   }
 
   measure: count {
