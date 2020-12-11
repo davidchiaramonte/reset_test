@@ -1,6 +1,47 @@
 view: orders {
   sql_table_name: demo_db.orders ;;
 
+  parameter: date_rollup {
+    type: string
+    default_value: "total"
+    allowed_value: {
+      label: "Hour of Day"
+      value: "hour_of_day"
+    }
+    allowed_value: {
+      label: "Hour"
+      value: "hour"
+    }
+    allowed_value: {
+      label: "Date"
+      value: "date"
+    }
+    allowed_value: {
+      label: "Week"
+      value: "week"
+    }
+    allowed_value: {
+      label: "Month"
+      value: "month"
+    }
+    allowed_value: {
+      label: "Fiscal Quarter"
+      value: "fiscal_quarter"
+    }
+    allowed_value: {
+      label: "Year"
+      value: "year"
+    }
+    allowed_value: {
+      label: "Fiscal Year"
+      value: "fiscal_year"
+    }
+    allowed_value: {
+      label: "Total"
+      value: "total"
+    }
+  }
+
   dimension: id {
     primary_key: yes
     type: number
