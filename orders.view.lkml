@@ -42,6 +42,19 @@ view: orders {
     }
   }
 
+  dimension: test_para {
+    type: number
+    sql:
+    CASE
+    WHEN {% parameter date_rollup %} = 'total'
+    THEN ${id}
+    WHEN {% parameter date_rollup %} = 'year'
+    THEN ${id_embed_repro}
+    ELSE NULL
+    END ;;
+    html: {{rendered_value}}} ;;
+  }
+
   dimension: id {
     primary_key: yes
     type: number
