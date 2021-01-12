@@ -42,10 +42,58 @@ view: orders {
     }
   }
 
+  dimension: dynamic_parameter_date {
+    type: string
+    sql:
+    CASE WHEN {% parameter date_rollup%} = 'hour_of_day' THEN ${created_hour_of_day}
+    WHEN {% parameter date_rollup%} = 'hour' THEN ${created_hour}
+    WHEN {% parameter date_rollup%} = 'date' THEN ${created_date}
+    WHEN {% parameter date_rollup%} = 'week' THEN ${created_week}
+    WHEN {% parameter date_rollup%} = 'month' THEN ${created_month}
+    WHEN {% parameter date_rollup%} = 'fiscal_quarter' THEN ${created_fiscal_quarter}
+    WHEN {% parameter date_rollup%} = 'year' THEN ${created_year}
+    WHEN {% parameter date_rollup%} = 'fiscal_year' THEN ${created_fiscal_year}
+    ELSE ${created_date} END;;
+  }
+
+  dimension: date_passed_into_filter {
+    type: string
+    sql:
+    CASE WHEN {% parameter date_rollup%} = 'hour_of_day' THEN 'Hour of Day'
+    WHEN {% parameter date_rollup%} = 'hour' THEN 'Hour'
+    WHEN {% parameter date_rollup%} = 'date' THEN 'Date'
+    WHEN {% parameter date_rollup%} = 'week' THEN 'Week'
+    WHEN {% parameter date_rollup%} = 'month' THEN 'Month'
+    WHEN {% parameter date_rollup%} = 'fiscal_quarter' THEN 'Fiscal Quarter'
+    WHEN {% parameter date_rollup%} = 'year' THEN 'Year'
+    WHEN {% parameter date_rollup%} = 'fiscal_year' THEN 'Fiscal Year'
+    ELSE 'Date' END ;;
+  }
+
+  dimension: third_times_the_charm {
+    type: string
+    sql:
+    CASE WHEN {% parameter date_rollup%} = 'hour_of_day' THEN 'hour^_of^_day'
+    WHEN {% parameter date_rollup%} = 'hour' THEN 'hour'
+    WHEN {% parameter date_rollup%} = 'date' THEN 'date'
+    WHEN {% parameter date_rollup%} = 'week' THEN 'week'
+    WHEN {% parameter date_rollup%} = 'month' THEN 'month'
+    WHEN {% parameter date_rollup%} = 'fiscal_quarter' THEN 'fiscal^_quarter'
+    WHEN {% parameter date_rollup%} = 'year' THEN 'year'
+    WHEN {% parameter date_rollup%} = 'fiscal_year' THEN 'fiscal^_year'
+    ELSE 'Date' END ;;
+  }
+
   dimension: id {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+  }
+
+  dimension: form_value {
+    label: "Form Value"
+    type: number
+    sql: ${TABLE}.form_value ;;
   }
 
   dimension: id_embed_repro {
@@ -90,7 +138,11 @@ view: orders {
       week,
       month,
       quarter,
-      year
+      year,
+      hour_of_day,
+      hour,
+      fiscal_quarter,
+      fiscal_year
     ]
     sql: ${TABLE}.created_at ;;
   }
@@ -178,8 +230,17 @@ view: orders {
     type: count
     drill_fields: [id, users.first_name, users.last_name, users.id, order_items.count]
     link: {
-      label: "Doesn't Work for 1st Row"
-      url: "https://google.com"
+      label: "Pass param to dashboard filter"
+      url: "https://lookerv720.dev.looker.com/dashboards-next/73?Date+Rollup={{ date_rollup._parameter_value | url_encode }}"
+    }
+  }
+
+  measure: count_with_case_sensitve_link {
+    type: count
+    drill_fields: [id, users.first_name, users.last_name, users.id, order_items.count]
+    link: {
+      label: "Pass param to dashboard filter"
+      url: "/dashboards-next/73@{my_url_test}"
     }
   }
 }
