@@ -229,10 +229,10 @@ view: orders {
   measure: count {
     type: count
     drill_fields: [id, users.first_name, users.last_name, users.id, order_items.count]
-    link: {
-      label: "Pass param to dashboard filter"
-      url: "https://lookerv720.dev.looker.com/dashboards-next/73?Date+Rollup={{ date_rollup._parameter_value | url_encode }}"
-    }
+    # link: {
+    #   label: "Pass param to dashboard filter"
+    #   url: "https://lookerv720.dev.looker.com/dashboards-next/73?Date+Rollup={{ date_rollup._parameter_value | url_encode }}"
+    # }
   }
 
   measure: count_with_case_sensitve_link {
