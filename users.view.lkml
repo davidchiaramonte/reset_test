@@ -17,6 +17,30 @@ view: users {
     sql: ${TABLE}.age ;;
   }
 
+  parameter: age_buckets {
+    type: string
+  }
+
+  dimension: age_compare_groups {
+
+    sql:
+    {% assign my_array = age_buckets._parameter_value | remove: "'" | split: "," %}
+        {% assign sort = '-1' %}
+    {% assign last_group_max_label = ' 0' %}
+    case
+    {%for element in my_array%}
+    {% assign sort = sort | plus: 1 %}
+      when ${age}<{{element}} then '{{sort}}. {{last_group_max_label}} < N < {{element}}'
+      {% assign last_group_max_label = element %}
+    {%endfor%}
+    {% assign sort = sort | plus: 1 %}
+      when ${age}>={{last_group_max_label}} then '{{sort}}. >= {{last_group_max_label}}'
+    else 'unknown'
+    end
+          ;;
+
+    }
+
   dimension: city {
     type: string
     sql: ${TABLE}.city ;;
