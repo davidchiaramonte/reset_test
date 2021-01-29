@@ -88,6 +88,7 @@ view: orders {
     primary_key: yes
     type: number
     sql: ${TABLE}.id ;;
+    html:  {{ "hello" }} ;;
   }
 
   dimension: form_value {
