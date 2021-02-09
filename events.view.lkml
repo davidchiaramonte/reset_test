@@ -6,6 +6,11 @@ view: events {
     type: number
     sql: ${TABLE}.id ;;
   }
+  dimension: new {
+    type: number
+    sql: ${TABLE}.id ;;
+  }
+
 
   dimension_group: created {
     type: time
